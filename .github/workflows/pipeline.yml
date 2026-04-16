@@ -39,10 +39,10 @@ jobs:
           else
             # Otherwise, append only the specific apps that changed
             if [ "${{ steps.filter.outputs.payment }}" == "true" ]; then
-              matrix=$(echo $matrix | jq '. += ["apps/payment-api"]')
+              matrix=$(echo $matrix | jq -c '. += ["apps/payment-api"]')
             fi
             if [ "${{ steps.filter.outputs.user }}" == "true" ]; then
-              matrix=$(echo $matrix | jq '. += ["apps/user-api"]')
+              matrix=$(echo $matrix | jq -c '. += ["apps/user-api"]')
             fi
           fi
           
